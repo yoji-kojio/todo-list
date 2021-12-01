@@ -1,10 +1,11 @@
 <template>
   <div class="todo-create-form">
-    <div v-if="inCreateMode" class="todo-create-form__input-container">
+    <div v-if="inCreateMode" data-testid="input-container" class="todo-create-form__input-container">
       <input
         v-model="todoText"
         type="text"
         placeholder="ENTER to save or ESC to cancel"
+        data-testid="todo-text-input"
         class="todo-create-form__input"
         @keyup.enter="createTodoItem"
       />
@@ -16,7 +17,8 @@
     <div
       v-else
       v-tooltip="'Click or press N'"
-      class="todo-create-form__edit-mode-button"
+      data-testid="icon-button"
+      class="todo-create-form__icon-button"
       @click="toggleCreateMode"
     >
       <font-awesome-icon icon="plus" />
@@ -109,7 +111,7 @@ export default {
   padding: $space-md;
 }
 
-.todo-create-form__edit-mode-button {
+.todo-create-form__icon-button {
   cursor: pointer;
   padding: $space-md;
   width: 100%;
