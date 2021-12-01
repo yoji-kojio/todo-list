@@ -5,13 +5,9 @@
 npm install
 ```
 
-### Run `json-server` to simulate our endpoint
-`json-server` needs to run on port `3000` and will ovewrite `database.json` file in project root.
-```
-npm run db:serve
-```
-
 ### Compiles and hot-reloads for development
+This command will run `json-server` to simulate our endpoint.
+`json-server` needs to run on port `3000` and will overwrite `database.json`.
 ```
 npm run serve
 ```
