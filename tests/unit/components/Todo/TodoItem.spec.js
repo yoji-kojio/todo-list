@@ -31,12 +31,12 @@ describe('TodoItem', () => {
     expect(wrapper.find('[data-testid="todo-icon"]').attributes('icon')).toMatch('check-circle');
   });
 
-  it('emits click-done when action button is clicked', async () => {
+  it('emits done when action button is clicked', async () => {
     wrapper.find('[data-testid="action-button"]').element.click();
     await wrapper.vm.$nextTick();
 
     expect(wrapper.vm.taskIsDone).toBe(true);
-    expect(wrapper.emitted('click-done')).toBeTruthy();
+    expect(wrapper.emitted('done')).toBeTruthy();
   });
 
   describe('when task is done', () => {

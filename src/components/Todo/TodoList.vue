@@ -5,7 +5,8 @@
       :key="todoItem.id"
       :title="todoItem.title"
       :is-done="todoItem.done"
-      @click-done="updateDoneStatus($event, todoItem.id)"
+      data-testid="todo-list"
+      @done="updateDoneStatus(todoItem.id)"
       @remove="removeItem(todoItem.id)"
     />
   </div>
@@ -26,13 +27,13 @@ export default {
   },
   methods: {
     ...mapMutations(['updateTodoItemDone', 'removeItemFromList']),
-    async updateDoneStatus(isDone, itemId) {
+    async updateDoneStatus(itemId) {
       await axios.patch(`http://localhost:3000/todos/${itemId}`, {
-        done: isDone
-      }).catch (error => {
+        done: true
+      }).catch(error => {
         console.error(error);
       }).finally(() => {
-        this.updateTodoItemDone({ itemId, isDone });
+        this.updateTodoItemDone({ itemId, isDone: true });
       });
     },
     async removeItem(itemId) {

@@ -36,17 +36,13 @@ export default {
   },
   methods: {
     updateDoneStatus() {
-      this.taskIsDone = !this.taskIsDone;
+      this.taskIsDone = true;
+      this.$emit('done');
     },
     emitRemoveItem() {
       this.$emit('remove');
     },
   },
-  watch: {
-    taskIsDone(isDone) {
-      this.$emit('click-done', isDone);
-    }
-  }
 }
 </script>
 
