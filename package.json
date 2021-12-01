@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "npm run db:serve & vue-cli-service serve",
+    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "db:serve": "json-server --watch database.json --port=3000"
+    "db:serve": "json-server --watch db/database.json --port=3000"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

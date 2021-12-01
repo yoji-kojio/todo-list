@@ -1,0 +1,20 @@
+version: '3'
+services:
+  app:
+    container_name: todo-list
+    image: todo-list-image
+    restart: always
+    build: .
+    environment:
+      - DB_HOST=json-server
+    ports:
+      - "8080:8080"
+  json-server:
+    container_name: json-server-container
+    image: json-server-image
+    build: ./db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./db/database.json:/data/database.json
+    command: json-server --watch /data/database.json --host 0.0.0.0
