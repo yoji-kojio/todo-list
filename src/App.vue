@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>to-do list</h1>
+  <ProgressBar />
+  <TodoList />
+  <TodoCreateForm />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapActions } from 'vuex'
+import TodoList from './components/Todo/TodoList'
+import TodoCreateForm from './components/Todo/TodoCreateForm'
+import ProgressBar from './components/ProgressBar';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TodoList,
+    TodoCreateForm,
+    ProgressBar
+  },
+  created() {
+    this.fetchTodoList();
+  },
+  methods: {
+    ...mapActions(['fetchTodoList'])
   }
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
