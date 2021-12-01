@@ -1,14 +1,14 @@
 <template>
-  <div tabindex="0" class="todo-item" :class="{ 'todo-item--disabled': taskIsDone }">
-    <div class="todo-item__title" :class="{ 'todo-item__title--disabled': taskIsDone }">
+  <div tabindex="0" data-testid="todo-item" class="todo-item" :class="{ 'todo-item--disabled': taskIsDone }">
+    <div data-testid="todo-title" class="todo-item__title">
       {{ title }}
     </div>
 
-    <div v-if="taskIsDone" v-tooltip="'Remove'" @click="emitRemoveItem">
-      <font-awesome-icon icon="trash" class="todo-item__remove-button" />
+    <div v-if="taskIsDone" v-tooltip="'Remove'" data-testid="action-button" @click="emitRemoveItem">
+      <font-awesome-icon icon="trash" data-testid="todo-icon" class="todo-item__remove-button" />
     </div>
-    <div v-else v-tooltip="'Mark as done'" @click="updateDoneStatus">
-      <font-awesome-icon icon="check-circle" class="todo-item__done-button" />
+    <div v-else v-tooltip="'Mark as done'" data-testid="action-button" @click="updateDoneStatus">
+      <font-awesome-icon icon="check-circle" data-testid="todo-icon" class="todo-item__done-button" />
     </div>
   </div>
 </template>
@@ -64,15 +64,15 @@ export default {
 .todo-item--disabled {
   opacity: 0.4;
   cursor: default;
+
+  .todo-item__title {
+    text-decoration: line-through;
+  }
 }
 
 .todo-item__title {
   color: $dark-liver;
   text-align: left;
-}
-
-.todo-item__title--disabled {
-  text-decoration: line-through;
 }
 
 .todo-item__done-button {
